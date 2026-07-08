@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "AI Autocomplete Extension",
+  "version": "1.0.0",
+  "description": "Inline AI autocomplete for text inputs, textareas, and contenteditable fields.",
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "AI Autocomplete",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.svg",
+    "48": "icons/icon48.svg",
+    "128": "icons/icon128.svg"
+  }
+}

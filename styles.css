@@ -1,0 +1,18 @@
+.ai-autocomplete-overlay {
+  position: fixed;
+  display: none;
+  z-index: 2147483647;
+  pointer-events: none;
+  white-space: pre-wrap;
+  overflow: hidden;
+  opacity: 1;
+  user-select: none;
+}
+
+.ai-autocomplete-caret-mirror {
+  position: fixed;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
