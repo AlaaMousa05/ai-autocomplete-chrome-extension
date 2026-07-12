@@ -1,0 +1,23 @@
+{
+    "hooks": {
+        "PostToolUse": [
+            {
+                "matcher": "Edit|Write",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node -e 'let d=\"\";process.stdin.on(\"data\",c=>d+=c);process.stdin.on(\"end\",()=>{let f;try{const j=JSON.parse(d);f=(j.tool_input&&j.tool_input.file_path)||(j.tool_response&&j.tool_response.filePath);if(f&&/\\.js$/.test(f)){const r=require(\"child_process\").spawnSync(\"node\",[\"--check\",f],{stdio:\"inherit\"});if(r.status){console.error(\"[hook] JS syntax check failed: \"+f);process.exitCode=2;}}}catch(e){}})'",
+                        "timeout": 15,
+                        "statusMessage": "Checking JS syntax..."
+                    },
+                    {
+                        "type": "command",
+                        "command": "node -e 'let d=\"\";process.stdin.on(\"data\",c=>d+=c);process.stdin.on(\"end\",()=>{let f;try{const j=JSON.parse(d);f=(j.tool_input&&j.tool_input.file_path)||(j.tool_response&&j.tool_response.filePath);if(f&&/manifest\\.json$/.test(f)){const fs=require(\"fs\");let manifest;try{manifest=JSON.parse(fs.readFileSync(f,\"utf8\"));}catch(e){console.error(\"[hook] manifest.json is not valid JSON: \"+e.message);process.exitCode=2;return;}const required=[\"manifest_version\",\"name\",\"version\"];const missing=required.filter(k=>!(k in manifest));if(missing.length){console.error(\"[hook] manifest.json is missing required field(s): \"+missing.join(\", \"));process.exitCode=2;}}}catch(e){}})'",
+                        "timeout": 15,
+                        "statusMessage": "Validating manifest.json..."
+                    }
+                ]
+            }
+        ]
+    }
+}

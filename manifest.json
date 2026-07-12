@@ -1,7 +1,6 @@
 {
   "manifest_version": 3,
   "name": "AI Autocomplete Extension",
-  "version": "1.0.0",
   "description": "Inline AI autocomplete for text inputs, textareas, and contenteditable fields.",
   "permissions": ["storage"],
   "host_permissions": ["<all_urls>"],
