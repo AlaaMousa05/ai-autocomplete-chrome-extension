@@ -4,6 +4,7 @@ A Chrome Extension that adds AI-powered inline autocomplete to text fields on an
 
 ## Demo
 
+<img width="1231" height="302" alt="Screenshot 2026-07-09 000456" src="https://github.com/user-attachments/assets/0999fac3-f836-4057-8765-30c72efba135" />
 
 
 ## Features
